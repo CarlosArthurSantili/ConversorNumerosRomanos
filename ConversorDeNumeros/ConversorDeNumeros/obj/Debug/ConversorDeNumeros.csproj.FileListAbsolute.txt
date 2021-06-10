@@ -1,0 +1,6 @@
+C:\Users\Carlos\source\repos\ConversorDeNumeros\ConversorDeNumeros\bin\Debug\ConversorDeNumeros.exe.config
+C:\Users\Carlos\source\repos\ConversorDeNumeros\ConversorDeNumeros\bin\Debug\ConversorDeNumeros.exe
+C:\Users\Carlos\source\repos\ConversorDeNumeros\ConversorDeNumeros\bin\Debug\ConversorDeNumeros.pdb
+C:\Users\Carlos\source\repos\ConversorDeNumeros\ConversorDeNumeros\obj\Debug\ConversorDeNumeros.csproj.CoreCompileInputs.cache
+C:\Users\Carlos\source\repos\ConversorDeNumeros\ConversorDeNumeros\obj\Debug\ConversorDeNumeros.exe
+C:\Users\Carlos\source\repos\ConversorDeNumeros\ConversorDeNumeros\obj\Debug\ConversorDeNumeros.pdb
