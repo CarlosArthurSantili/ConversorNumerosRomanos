@@ -82,5 +82,13 @@ namespace ConversorIndoParaRomanoTestes
 
             Assert.AreEqual(4010, teste.Conversor());
         }
+
+        [TestMethod]
+        public void ConversorNumeroRomanoParaIndoX̄X̄X̄()
+        {
+            ConversorRomanoParaIndo teste = new ConversorRomanoParaIndo("X̄X̄X̄");
+
+            Assert.AreEqual(30000, teste.Conversor());
+        }
     }
 }

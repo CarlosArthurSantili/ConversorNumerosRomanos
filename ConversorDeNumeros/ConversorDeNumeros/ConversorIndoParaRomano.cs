@@ -95,6 +95,8 @@ namespace ConversorDeNumeros
             {
                 default: return "";
                 case 1: return "X̄";
+                case 2: return "X̄X̄";
+                case 3: return "X̄X̄X̄";
             }
         }
     }

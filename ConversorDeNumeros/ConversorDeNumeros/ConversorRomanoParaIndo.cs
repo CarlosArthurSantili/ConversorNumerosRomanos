@@ -20,7 +20,6 @@ namespace ConversorDeNumeros
         {
             int resultado = 0;
             string numeroRomanoNormalizado = NormalizarNumeroRomano();
-
             if (ValidaNumeroRomano())
             {                    
                 foreach (var letra in numeroRomanoNormalizado)
@@ -58,22 +57,6 @@ namespace ConversorDeNumeros
         {
             if (numeroRomano.Length > 1)
             {
-                if (numeroRomano.Substring(2).Contains("i"))
-                {
-                    return false;
-                }
-
-                if ((numeroRomano.Substring(2).Contains("v")))
-                {
-                    if (!numeroRomano.StartsWith("i"))
-                        return false;
-                }
-
-                if ((numeroRomano.Substring(2).Contains("x")))
-                {
-                    return false;
-                }
-
                 if ((numeroRomano.Contains("IL"))||(numeroRomano.Contains("IC")) || (numeroRomano.Contains("ID")) || (numeroRomano.Contains("IM")))
                 {
                     return false;
@@ -91,7 +74,7 @@ namespace ConversorDeNumeros
         {
             if (numeroRomano.Length > 1)
             {
-                if (Regex.Matches(numeroRomano, "i").Count > 1)
+                if (Regex.Matches(numeroRomano, "i").Count > 3)
                 {
                     return false;
                 }
@@ -101,7 +84,7 @@ namespace ConversorDeNumeros
                     return false;
                 }
 
-                if (Regex.Matches(numeroRomano, "x").Count > 1)
+                if (Regex.Matches(numeroRomano, "x").Count > 3)
                 {
                     return false;
                 }

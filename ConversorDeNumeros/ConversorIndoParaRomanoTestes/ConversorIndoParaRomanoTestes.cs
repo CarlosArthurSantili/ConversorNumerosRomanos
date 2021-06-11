@@ -154,19 +154,11 @@ namespace ConversorIndoParaRomanoTestes
         }
 
         [TestMethod]
-        public void ConversorIndoParaRomano10001a10005()
+        public void ConversorIndoParaRomano30000()
         {
-            ConversorIndoParaRomano teste1 = new ConversorIndoParaRomano(10001);
-            ConversorIndoParaRomano teste2 = new ConversorIndoParaRomano(10002);
-            ConversorIndoParaRomano teste3 = new ConversorIndoParaRomano(10003);
-            ConversorIndoParaRomano teste4 = new ConversorIndoParaRomano(10004);
-            ConversorIndoParaRomano teste5 = new ConversorIndoParaRomano(10005);
+            ConversorIndoParaRomano teste5 = new ConversorIndoParaRomano(30000);
              
-            Assert.AreEqual("X̄I", teste1.Conversor());
-            Assert.AreEqual("X̄II", teste2.Conversor());
-            Assert.AreEqual("X̄III", teste3.Conversor());
-            Assert.AreEqual("X̄IV", teste4.Conversor());
-            Assert.AreEqual("X̄V", teste5.Conversor());
+            Assert.AreEqual("X̄X̄X̄", teste5.Conversor());
         }
     }
 }
