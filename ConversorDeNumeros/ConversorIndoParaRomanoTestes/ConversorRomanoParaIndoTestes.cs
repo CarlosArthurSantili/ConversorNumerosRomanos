@@ -68,6 +68,14 @@ namespace ConversorIndoParaRomanoTestes
         }
 
         [TestMethod]
+        public void ConversorNumeroRomanoParaIndoĪV̄CML()
+        {
+            ConversorRomanoParaIndo teste = new ConversorRomanoParaIndo("ĪV̄CML");
+
+            Assert.AreEqual(4950, teste.Conversor());
+        }
+
+        [TestMethod]
         public void ConversorNumeroRomanoParaIndoĪV̄X()
         {
             ConversorRomanoParaIndo teste = new ConversorRomanoParaIndo("ĪV̄X");

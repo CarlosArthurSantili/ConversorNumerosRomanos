@@ -81,41 +81,43 @@ namespace ConversorDeNumeros
 
         private bool ValidaNumeroRomano() 
         {
-            if (Regex.Matches(numeroRomano, "ĪV̄").Count > 1)
+            if (numeroRomano.Length > 1)
             {
-                return false;
-            }
+                if ((Regex.Matches(numeroRomano, "ĪV̄").Count > 1) || (numeroRomano.Substring(2).Contains("ĪV̄")))
+                {
+                    return false;
+                }
 
-            if (Regex.Matches(numeroRomano, "V̄").Count > 1)
-            {
-                return false;
-            }
+                if ((Regex.Matches(numeroRomano, "V̄").Count > 1) || (numeroRomano.Substring(2).Contains("V̄")))
+                {
+                    return false;
+                }
 
-            if (Regex.Matches(numeroRomano, "V̄Ī").Count > 1)
-            {
-                return false;
-            }
+                if ((Regex.Matches(numeroRomano, "V̄Ī").Count > 1) || (numeroRomano.Substring(2).Contains("V̄Ī")))
+                {
+                    return false;
+                }
 
-            if (Regex.Matches(numeroRomano, "V̄ĪĪ").Count > 1)
-            {
-                return false;
-            }
+                if ((Regex.Matches(numeroRomano, "V̄ĪĪ").Count > 1) || (numeroRomano.Substring(2).Contains("V̄ĪĪ")))
+                {
+                    return false;
+                }
 
-            if (Regex.Matches(numeroRomano, "V̄ĪĪĪ").Count > 1)
-            {
-                return false;
-            }
+                if ((Regex.Matches(numeroRomano, "V̄ĪĪĪ").Count > 1) || (numeroRomano.Substring(2).Contains("V̄ĪĪĪ")))
+                {
+                    return false;
+                }
 
-            if (Regex.Matches(numeroRomano, "ĪX̄").Count > 1)
-            {
-                return false;
-            }
+                if ((Regex.Matches(numeroRomano, "ĪX̄").Count > 1) || (numeroRomano.Substring(2).Contains("ĪX̄")))
+                {
+                    return false;
+                }
 
-            if (Regex.Matches(numeroRomano, "X̄").Count > 1)
-            {
-                return false;
+                if ((Regex.Matches(numeroRomano, "X̄").Count > 1) || (numeroRomano.Substring(2).Contains("X̄")))
+                {
+                    return false;
+                }
             }
-
             return true;
         }
 

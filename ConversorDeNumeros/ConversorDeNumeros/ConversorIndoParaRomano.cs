@@ -18,10 +18,7 @@ namespace ConversorDeNumeros
 
         public string Conversor()
         {
-            string numeroRomano = "";
-            numeroRomano = numerosRomanosDezenaMilhar() + numerosRomanosMilhar() + numerosRomanosCentena() + numerosRomanosDezena() + numerosRomanosUnidade();
-            
-            return numeroRomano;
+            return numerosRomanosDezenaMilhar() + numerosRomanosMilhar() + numerosRomanosCentena() + numerosRomanosDezena() + numerosRomanosUnidade();
         }
 
         public string numerosRomanosUnidade()
