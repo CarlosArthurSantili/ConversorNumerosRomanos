@@ -11,109 +11,75 @@ namespace ConversorDeNumeros
     {
         public string numeroRomano;
 
-        public ConversorRomanoParaIndo(string valorRomano)
+        public ConversorRomanoParaIndo(string numeroRomano)
         {
-            this.numeroRomano = valorRomano;
+            this.numeroRomano = numeroRomano;
         }
 
         public int Conversor()
         {
-            numeroRomano = numeroRomano.ToUpper();
-            var resultado = 0;
+            int resultado = 0;
+            string numeroRomanoNormalizado = NormalizarNumeroRomano();
 
             if (ValidaNumeroRomano())
-            {
-                if (numeroRomano.Contains("ĪV̄"))
-                {
-                    numeroRomano = numeroRomano.Substring(3);
-                    resultado += 4000;
-                }
-                else if (numeroRomano.Contains("V̄"))
-                {
-                    numeroRomano = numeroRomano.Substring(1);
-                    resultado += 5000;
-                }
-                else if (numeroRomano.Contains("V̄Ī"))
-                {
-                    numeroRomano = numeroRomano.Substring(3);
-                    resultado += 6000;
-                }
-                else if (numeroRomano.Contains("V̄ĪĪ"))
-                {
-                    numeroRomano = numeroRomano.Substring(5);
-                    resultado += 7000;
-                }
-                else if (numeroRomano.Contains("V̄ĪĪĪ"))
-                {
-                    numeroRomano = numeroRomano.Substring(7);
-                    resultado += 8000;
-                }
-                else if (numeroRomano.Contains("ĪX̄")) 
-                {
-                    numeroRomano = numeroRomano.Substring(3);
-                    resultado += 9000;
-                }
-                else if (numeroRomano.Contains("X̄"))
-                {
-                    numeroRomano = numeroRomano.Substring(1);
-                    resultado += 10000;
-                }
-                    
-                foreach (var letra in numeroRomano)
+            {                    
+                foreach (var letra in numeroRomanoNormalizado)
                 {
                     resultado += ConverterLetraParaNumero(letra);
                 }
-
+                //Casos de Subtração
                 if (numeroRomano.Contains("IV") || numeroRomano.Contains("IX"))
                     resultado -= 2;
-
+                
                 if (numeroRomano.Contains("XL") || numeroRomano.Contains("XC"))
                     resultado -= 20;
 
                 if (numeroRomano.Contains("CD") || numeroRomano.Contains("CM"))
                     resultado -= 200;
-                
+
+                if (numeroRomano.Contains("iv") || numeroRomano.Contains("ix"))
+                    resultado -= 2000;
+
                 return resultado;
             }
             else
                 return -1;
         }
 
-        private bool ValidaNumeroRomano() 
+        private bool ValidaNumeroRomano()
+        {
+            if (ValidaNumeroRomanoLetrasLocalIncorreto() && ValidaNumeroRomanoQuantidadeLetras())
+                return true;
+            else
+                return false;
+        }
+        
+        private bool ValidaNumeroRomanoLetrasLocalIncorreto() 
         {
             if (numeroRomano.Length > 1)
             {
-                if ((Regex.Matches(numeroRomano, "ĪV̄").Count > 1) || (numeroRomano.Substring(2).Contains("ĪV̄")))
+                if (numeroRomano.Substring(2).Contains("i"))
                 {
                     return false;
                 }
 
-                if ((Regex.Matches(numeroRomano, "V̄").Count > 1) || (numeroRomano.Substring(2).Contains("V̄")))
+                if ((numeroRomano.Substring(2).Contains("v")))
+                {
+                    if (!numeroRomano.StartsWith("i"))
+                        return false;
+                }
+
+                if ((numeroRomano.Substring(2).Contains("x")))
                 {
                     return false;
                 }
 
-                if ((Regex.Matches(numeroRomano, "V̄Ī").Count > 1) || (numeroRomano.Substring(2).Contains("V̄Ī")))
+                if ((numeroRomano.Contains("IL"))||(numeroRomano.Contains("IC")) || (numeroRomano.Contains("ID")) || (numeroRomano.Contains("IM")))
                 {
                     return false;
                 }
 
-                if ((Regex.Matches(numeroRomano, "V̄ĪĪ").Count > 1) || (numeroRomano.Substring(2).Contains("V̄ĪĪ")))
-                {
-                    return false;
-                }
-
-                if ((Regex.Matches(numeroRomano, "V̄ĪĪĪ").Count > 1) || (numeroRomano.Substring(2).Contains("V̄ĪĪĪ")))
-                {
-                    return false;
-                }
-
-                if ((Regex.Matches(numeroRomano, "ĪX̄").Count > 1) || (numeroRomano.Substring(2).Contains("ĪX̄")))
-                {
-                    return false;
-                }
-
-                if ((Regex.Matches(numeroRomano, "X̄").Count > 1) || (numeroRomano.Substring(2).Contains("X̄")))
+                if ((numeroRomano.Contains("XD")) || (numeroRomano.Contains("XM")))
                 {
                     return false;
                 }
@@ -121,10 +87,44 @@ namespace ConversorDeNumeros
             return true;
         }
 
-        private int ConverterLetraParaNumero(char letter)
+        private bool ValidaNumeroRomanoQuantidadeLetras()
         {
-            switch (letter)
+            if (numeroRomano.Length > 1)
             {
+                if (Regex.Matches(numeroRomano, "i").Count > 1)
+                {
+                    return false;
+                }
+
+                if (Regex.Matches(numeroRomano, "v").Count > 1)
+                {
+                    return false;
+                }
+
+                if (Regex.Matches(numeroRomano, "x").Count > 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private int ConverterLetraParaNumero(char letra)
+        {
+            switch (letra)
+            {
+                case 'x':
+                    {
+                        return 10000;
+                    }
+                case 'v':
+                    {
+                        return 5000;
+                    }
+                case 'i':
+                    {
+                        return 1000;
+                    }
                 case 'M':
                     {
                         return 1000;
@@ -165,7 +165,16 @@ namespace ConversorDeNumeros
                         return 0;
                     }
             }
+        }
 
+        private string NormalizarNumeroRomano() 
+        {
+            numeroRomano = numeroRomano.ToUpper();
+            numeroRomano = numeroRomano.Replace("Ī", "i");
+            numeroRomano = numeroRomano.Replace("V̄", "v");
+            numeroRomano = numeroRomano.Replace("X̄", "x");
+
+            return numeroRomano;
         }
     }
 }
